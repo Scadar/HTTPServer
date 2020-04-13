@@ -9,7 +9,7 @@ public interface HttpRequest {
 
     String getMethod();
 
-    String getUrl();
+    String getUri();
 
     String getHttpVersion();
 

@@ -62,7 +62,7 @@ class DefaultReadableHttpResponse implements ReadableHttpResponse {
     public void setHeader(String name, Object val) {
         Objects.requireNonNull(name, "Name can`t be null");
         Objects.requireNonNull(val, "Val can`t be null");
-        name = HttpUtils.normilizeHeaderName(name);
+        name = HttpUtils.normalizeHeaderName(name);
         if(val instanceof Date){
             headers.put(name, new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z").format(val));
         }else if(val instanceof FileTime){

@@ -7,16 +7,16 @@ import java.util.Map;
 
 class DefaultHttpRequest implements HttpRequest {
     private final String method;
-    private final String url;
+    private final String uri;
     private final String httpVersion;
     private final String remoteAddress;
     private final Map<String, String> headers;
     private final Map<String, String> parameters;
 
-    DefaultHttpRequest(String startingLine, String method, String url, String httpVersion, String remoteAddress, Map<String, String> headers, Map<String, String> parameters) {
+    DefaultHttpRequest(String method, String uri, String httpVersion, String remoteAddress, Map<String, String> headers, Map<String, String> parameters) {
         super();
         this.method = method;
-        this.url = url;
+        this.uri = uri;
         this.httpVersion = httpVersion;
         this.remoteAddress = remoteAddress;
         this.headers = Collections.unmodifiableMap(headers);
@@ -25,7 +25,7 @@ class DefaultHttpRequest implements HttpRequest {
 
     @Override
     public String getStartingLine() {
-        return String.format("%s %s %s", getMethod(),getUrl(), getHttpVersion());
+        return String.format("%s %s %s", getMethod(), getUri(), getHttpVersion());
     }
 
     @Override
@@ -34,8 +34,8 @@ class DefaultHttpRequest implements HttpRequest {
     }
 
     @Override
-    public String getUrl() {
-        return url;
+    public String getUri() {
+        return uri;
     }
 
     @Override

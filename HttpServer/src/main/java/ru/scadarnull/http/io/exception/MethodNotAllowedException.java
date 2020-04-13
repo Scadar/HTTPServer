@@ -1,5 +1,7 @@
 package ru.scadarnull.http.io.exception;
 
+import ru.scadarnull.http.io.Constants;
+
 public class MethodNotAllowedException extends AbstractRequestParseException {
     private static final long serialVersionUID = 1645796818476582454L;
 

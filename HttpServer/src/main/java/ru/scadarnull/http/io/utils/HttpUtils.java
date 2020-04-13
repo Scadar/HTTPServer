@@ -4,11 +4,12 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public final class HttpUtils {
 
-    public static String normilizeHeaderName(String name) {
+    public static String normalizeHeaderName(String name) {
         StringBuilder headerName = new StringBuilder(name.trim());
         for (int i = 0; i < headerName.length(); i++) {
             char ch = headerName.charAt(i);
@@ -82,6 +83,7 @@ public final class HttpUtils {
                 byte[] temp = array;
                 array = new byte[array.length * 2];
                 System.arraycopy(temp, 0, array, 0, size);
+
             }
             array[size++] = value;
         }
@@ -95,6 +97,5 @@ public final class HttpUtils {
         }
     }
 
-    private HttpUtils() {
-    }
+    private HttpUtils() {}
 }
