@@ -2,59 +2,59 @@ package ru.scadarnull.http.io.impl;
 
 import ru.scadarnull.http.io.HttpRequest;
 
+import java.util.Collections;
 import java.util.Map;
 
-public class DefaultHttpRequest implements HttpRequest {
-    private String startingLine;
-    private String method;
-    private String url;
-    private String httpVersion;
-    private String remoteAddress;
-    private Map<String, String> headers;
-    private Map<String, String> parameters;
+class DefaultHttpRequest implements HttpRequest {
+    private final String method;
+    private final String url;
+    private final String httpVersion;
+    private final String remoteAddress;
+    private final Map<String, String> headers;
+    private final Map<String, String> parameters;
 
-    @Override
-    public String getStartingLine() {
-        return null;
-    }
-
-    public DefaultHttpRequest(String startingLine, String method, String url, String httpVersion, String remoteAddress, Map<String, String> headers, Map<String, String> parameters) {
-        this.startingLine = startingLine;
+    DefaultHttpRequest(String startingLine, String method, String url, String httpVersion, String remoteAddress, Map<String, String> headers, Map<String, String> parameters) {
+        super();
         this.method = method;
         this.url = url;
         this.httpVersion = httpVersion;
         this.remoteAddress = remoteAddress;
-        this.headers = headers;
-        this.parameters = parameters;
+        this.headers = Collections.unmodifiableMap(headers);
+        this.parameters = Collections.unmodifiableMap(parameters);
+    }
+
+    @Override
+    public String getStartingLine() {
+        return String.format("%s %s %s", getMethod(),getUrl(), getHttpVersion());
     }
 
     @Override
     public String getMethod() {
-        return null;
+        return method;
     }
 
     @Override
     public String getUrl() {
-        return null;
+        return url;
     }
 
     @Override
     public String getHttpVersion() {
-        return null;
+        return httpVersion;
     }
 
     @Override
     public String getRemoteAddress() {
-        return null;
+        return remoteAddress;
     }
 
     @Override
     public Map<String, String> getHeaders() {
-        return null;
+        return headers;
     }
 
     @Override
     public Map<String, String> getParameters() {
-        return null;
+        return parameters;
     }
 }
